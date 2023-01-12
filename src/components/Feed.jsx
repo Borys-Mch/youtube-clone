@@ -6,11 +6,11 @@ import { Sidebar, Videos } from "./";
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
-  const [video, setVideo] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
-      setVideo(data.items)
+      setVideos(data.items)
     );
   }, [selectedCategory]);
 
@@ -44,7 +44,7 @@ const Feed = () => {
           {selectedCategory} <span style={{ color: "#F31503" }}>videos</span>
         </Typography>
 
-        <Videos videos={video} />
+        <Videos videos={videos} />
       </Box>
     </Stack>
   );
